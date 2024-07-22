@@ -2,6 +2,16 @@ const express = require ("express")
  
 const app = express ()
 
+function logRequests (req,res,next) {
+
+    console.log(`${req.method} ${req.url}`)
+
+    next ()
+
+}
+
+app.use (logRequests);
+
 app.get ('/', (req,res) => {
     res.send("Welcome to the online store")
 })
